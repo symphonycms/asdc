@@ -4,7 +4,7 @@
 
 		public function about(){
 			return array('name' => 'Advanced Symphony Database Connector (ASDC)',
-						 'version' => '1.0',
+						 'version' => '1.1',
 						 'release-date' => '2009-01-02',
 						 'author' => array('name' => 'Alistair Kearney',
 										   'website' => 'http://pointybeard.com',

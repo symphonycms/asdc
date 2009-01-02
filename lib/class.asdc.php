@@ -28,10 +28,19 @@
 			return self::$_connection;			
 		}
 		
+		static private function __dbConfig(){
+			
+			## Crude method of determining if we're in the admin or frontend
+			if(class_exists('Frontend'))
+				return (object)Frontend::instance()->Configuration->get('database');
+
+			return (object)Administration::instance()->Configuration->get('database');			
+		}
+		
 		static private function __init($enableProfiling=false){
 			
-			$details = (object)Frontend::instance()->Configuration->get('database');
-
+			$details = self::__dbConfig();
+				
 			$driver = 'ASDCMySQL';
 			if($enableProfiling) $driver .= 'Profiler';
 

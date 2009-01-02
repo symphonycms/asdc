@@ -1,7 +1,7 @@
 Advanced Symphony Database Connector (ASDC)
 ------------------------------------
 
-Version: 1.0
+Version: 1.1
 Author: Alistair Kearney (alistair@symphony21.com)
 Build Date: 2nd Jan 2009
 Requirements: Latest Symphony 2 build
@@ -13,6 +13,11 @@ driver used throughout Symphony, but is used in tandem to it.
 ASDCLoader::instance() will auto-discover the existing Database object and use its
 connection resource. It is possible to also use this library outside of Symphony, or
 establish a new database connection (See example 3).
+
+
+[CHANGE LOG]
+
+1.1 - ASDCLoader::instance() will correctly determine if currently operating from the Front end or Admin.
 
 
 [INSTALLATION]

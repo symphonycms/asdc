@@ -1,9 +1,9 @@
 Advanced Symphony Database Connector (ASDC)
 ------------------------------------
 
-Version: 1.1
+Version: 1.2
 Author: Alistair Kearney (alistair@symphony21.com)
-Build Date: 2nd Jan 2009
+Build Date: 21st Jan 2009
 Requirements: Latest Symphony 2 build
 
 A more efficient database library that can be used by developers as an alternative to
@@ -17,6 +17,7 @@ establish a new database connection (See example 3).
 
 [CHANGE LOG]
 
+1.2 - Added a truncate function
 1.1 - ASDCLoader::instance() will correctly determine if currently operating from the Front end or Admin.
 
 

@@ -94,7 +94,8 @@
 		abstract public function select($database);
 		abstract public function insert(array $fields, $table);
 		abstract public function update(array $fields, $table, $where=NULL);
-		abstract public function query($query);		
+		abstract public function query($query);	
+		abstract public function truncate($table);		
 		abstract public function delete($table, $where);
 		abstract public function lastError();
 		abstract public function connected();
@@ -299,6 +300,10 @@
 		public function delete($table, $where){
 			return $this->query("DELETE FROM `$table` WHERE $where");
 		}	
+
+		public function truncate($table){
+			return $this->query("TRUNCATE TABLE `{$table}`");
+		}
 
 	    public function query($query, $returnType='ASDCMySQLResult'){ 
 	        if(!$this->connected()) throw new Exception('No Database Connection Found.'); 

@@ -27,30 +27,11 @@
 			
 			return self::$_connection;			
 		}
-		
-		static private function __dbConfig(){
-			
-			## Crude method of determining if we're in the admin or frontend
-			if(class_exists('Frontend')){
-				return (object)Frontend::instance()->Configuration->get('database');
-			}
-			
-			return (object)Administration::instance()->Configuration->get('database');			
-		}
 
-		static private function __dbConnectionResource(){
-			
-			if(class_exists('Frontend')){
-				return Frontend::instance()->Database->getConnectionResource();
-			}
-			
-			return Administration::instance()->Database->getConnectionResource();			
-		}
-		
 		static private function __init($enableProfiling=false){
 			
-			$details = self::__dbConfig();
-				
+			$details = (object)Symphony::$Configuration->get('database');
+
 			$driver = 'ASDCMySQL';
 			if($enableProfiling) $driver .= 'Profiler';
 
@@ -68,7 +49,7 @@
 											$details->port, 
 											$details->db);
 
-			$db->connect($connection_string, self::__dbConnectionResource());
+			$db->connect($connection_string, Symphony::Database()->getConnectionResource());
 			$db->prefix = $details->tbl_prefix;
 
 
@@ -237,7 +218,7 @@
 			return $query;
 		}
 
-	    public function connect($string, resource &$resource=NULL){
+	    public function connect($string, $resource=NULL){
 				
 			/*
 				stdClass Object

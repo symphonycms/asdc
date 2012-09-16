@@ -30,7 +30,7 @@
 
 		static private function __init($enableProfiling=false){
 
-			$details = (object)Symphony::$Configuration->get('database');
+			$details = (object)Symphony::Configuration()->get('database');
 
 			$driver = 'ASDCMySQL';
 			if($enableProfiling) $driver .= 'Profiler';
@@ -274,7 +274,7 @@
 			foreach($this->cleanFields($fields) as $key => $val)
 				$rows[] = " `$key` = $val";
 
-			$this->query("INSERT INTO $table SET " . implode(', ', $rows));
+			$this->query("INSERT INTO `{$table}` SET " . implode(', ', $rows));
 
 			return mysql_insert_id($this->_connection);
 		}
@@ -283,11 +283,11 @@
 			foreach($this->cleanFields($fields) as $key => $val)
 				$rows[] = " `$key` = $val";
 
-			return $this->query("UPDATE $table SET " . implode(', ', $rows) . ($where != NULL ? " WHERE $where" : NULL));
+			return $this->query("UPDATE `{$table}` SET " . implode(', ', $rows) . ($where != NULL ? " WHERE {$where}" : NULL));
 		}
 
 		public function delete($table, $where){
-			return $this->query("DELETE FROM `$table` WHERE $where");
+			return $this->query("DELETE FROM `{$table}` WHERE {$where}");
 		}
 
 		public function truncate($table){

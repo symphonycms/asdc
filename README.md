@@ -1,9 +1,9 @@
 # Advanced Symphony Database Connector (ASDC)
 
-- Version: 1.4 (deprecated)
-- Author: Alistair Kearney (alistair@symphony21.com)
-- Build Date: 22nd July 2010
-- Requirements: Symphony 2.0.6 or above
+- Version: 1.5
+- Author: Alistair Kearney (hi@alistairkearney.com)
+- Build Date: 19th September 2012
+- Requirements: Symphony 2.3 or above
 
 A more efficient database library that can be used by developers as an alternative to the built in MySQL database connector. Note, this does not replace the existing driver used throughout Symphony, but is used in tandem to it.
 
